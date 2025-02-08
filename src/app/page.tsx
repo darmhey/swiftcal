@@ -122,7 +122,83 @@ export default function Home() {
           />
         </div>
       </section>
-      <section></section>
+      <section className="w-screen bg-main_accent">
+        <div className="max-w-7xl mx-auto flex flex-row justify-between pt-24">
+          <div className="bg-tile_cream rounded-xl flex flex-col justify-center gap-4 pl-6">
+            <h1 className=" text-3xl font-bold">85+</h1>
+            <p className="w-[280px]">meetings scheduled in the first month.</p>
+          </div>
+          <div className="bg-tile_blue rounded-xl flex flex-col justify-center gap-4 pl-6">
+            <h1 className=" text-3xl font-bold">50</h1>
+            <p className="w-[280px]">hours saved on back-and-forth emails.</p>
+          </div>
+          <div>
+            <div className="flex flex-row items-center gap-4">
+              <Image
+                src="/woman_two.jpg"
+                alt="Hero Image"
+                width={215}
+                height={250}
+              />
+              <p className="w-[350px] h-[150px] ">
+                &quot;This scheduling app transformed how I manage client
+                bookings. It&apos;s simple, fast, and keeps me organized!&quot;
+                -Sarah Thompson, Freelance Consultant
+              </p>
+            </div>
+          </div>
+        </div>
+        <div className="max-w-7xl mx-auto flex flex-row justify-between pt-12">
+          <div>
+            <div className="flex flex-row items-center gap-4">
+              <Image
+                src="/woman_two.jpg"
+                alt="Hero Image"
+                width={215}
+                height={250}
+              />
+              <p className="w-[350px] h-[150px] ">
+                &quot;This scheduling app transformed how I manage client
+                bookings. It&apos;s simple, fast, and keeps me organized!&quot;
+                -Sarah Thompson, Freelance Consultant
+              </p>
+            </div>
+          </div>
+          <div className="bg-tile_purple rounded-xl flex flex-col justify-center gap-4 pl-6">
+            <h1 className=" text-3xl font-bold">85+</h1>
+            <p className="w-[280px]">meetings scheduled in the first month.</p>
+          </div>
+          <div className="bg-tile_cream rounded-xl flex flex-col justify-center gap-4 pl-6">
+            <h1 className=" text-3xl font-bold">50</h1>
+            <p className="w-[280px]">hours saved on back-and-forth emails.</p>
+          </div>
+        </div>
+        <div className="max-w-7xl mx-auto flex flex-row justify-between pt-12">
+          <div className="bg-tile_blue rounded-xl flex flex-col justify-center gap-4 pl-6">
+            <h1 className=" text-3xl font-bold">85+</h1>
+            <p className="w-[280px]">meetings scheduled in the first month.</p>
+          </div>
+          <div className="bg-tile_green rounded-xl flex flex-col justify-center gap-4 pl-6">
+            <h1 className=" text-3xl font-bold">50</h1>
+            <p className="w-[280px]">hours saved on back-and-forth emails.</p>
+          </div>
+          <div>
+            <div className="flex flex-row items-center gap-4">
+              <Image
+                src="/woman_two.jpg"
+                alt="Hero Image"
+                width={215}
+                height={250}
+              />
+              <p className="w-[350px] h-[150px] ">
+                &quot;This scheduling app transformed how I manage client
+                bookings. It&apos;s simple, fast, and keeps me organized!&quot;
+                -Sarah Thompson, Freelance Consultant
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
     </>
   );
 }
