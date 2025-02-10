@@ -4,7 +4,7 @@ import "./globals.css";
 import Header from "@/app/_components/Header";
 
 const inter = Inter({
-  weight: "300",
+  weight: "400",
   style: "normal",
   subsets: ["latin"],
 });

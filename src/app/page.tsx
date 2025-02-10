@@ -11,7 +11,7 @@ export default function Home() {
   return (
     <>
       <section className="w-screen bg-main text-center">
-        <div className="max-w-7xl mx-auto  border border-red-400 flex flex-col gap-8 justify-start items-center w-full ">
+        <div className="max-w-7xl mx-auto  flex flex-col gap-8 justify-start items-center w-full ">
           <h1
             className={`text-6xl tracking-wide mt-32  w-[450px]  ${figtree.className}`}
           >
@@ -23,7 +23,7 @@ export default function Home() {
           </p>
 
           <Link
-            className="mb-16 bg-accent rounded-full "
+            className="mb-48 bg-accent rounded-full "
             href="https://google.com"
           >
             <div className=" px-10 py-6  flex items-center justify-center">
@@ -41,14 +41,20 @@ export default function Home() {
           </Link>
         </div>
       </section>
-      <div className="border w-screen border-red-400 max-w-7xl mx-auto flex flex-row justify-center mt-[-50px] ">
-        <Image
-          src="/image-main.png"
-          alt="Hero Image"
-          width={1032}
-          height={601}
-        />
-      </div>
+      {/* ilhnuu
+      g hgjkhkj
+      hjkhjhkl */}
+      <section className="w-screen">
+        <div className="flex flex-row justify-center  max-w-7xl mx-auto mt-[-90px] ">
+          <Image
+            src="/image-main.png"
+            alt="Hero Image"
+            width={1032}
+            height={601}
+          />
+        </div>
+      </section>
+
       <section className="w-screen bg-main_accent">
         <div className="max-w-7xl mx-auto flex flex-row py-8">
           <div className="flex flex-col  gap-3 font-bold">
@@ -113,13 +119,23 @@ export default function Home() {
             avoid conflicts, and keep everyone on the same page—no more endless
             email threads!
           </p>
+          <video
+            className="w-full h-full object-cover"
+            autoPlay
+            loop
+            muted
+            playsInline
+          >
+            <source src="/home-availability-light.mp4" type="video/mp4" />
+            Your browser does not support the video tag.
+          </video>
 
-          <Image
+          {/* <Image
             src="/image-main.png"
             alt="Hero Image"
             width={1032}
             height={601}
-          />
+          /> */}
         </div>
       </section>
       <section className="w-screen bg-main_accent pb-24">
