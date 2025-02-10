@@ -13,11 +13,11 @@ export default function Home() {
       <section className="w-screen bg-main text-center">
         <div className="max-w-7xl mx-auto  flex flex-col gap-8 justify-start items-center w-full ">
           <h1
-            className={`text-6xl tracking-wide mt-32  w-[450px]  ${figtree.className}`}
+            className={`text-4xl md:text-6xl md:tracking-wide mt-32  md:w-[450px]  ${figtree.className}`}
           >
             Your Time, Your Schedule, Simplified.
           </h1>
-          <p className="w-[750px] text-2xl">
+          <p className="md:w-[750px] text-2xl">
             Streamline your meetings with a smart booking system that works
             around your availability. No more back-and-forth emails.
           </p>
@@ -56,7 +56,7 @@ export default function Home() {
       </section>
 
       <section className="w-screen bg-main_accent">
-        <div className="max-w-7xl mx-auto flex flex-row py-8">
+        <div className="max-w-7xl mx-auto flex flex-col md:flex-row py-8 px-8 md:px-0">
           <div className="flex flex-col  gap-3 font-bold">
             <h1 className="{`text-2xl underline italic pb  ${figtree.className}`}">
               SwiftCal
@@ -66,13 +66,13 @@ export default function Home() {
             </h1>
           </div>
 
-          <p className="w-[826px] text-2xl pt-6">
+          <p className="md:w-[826px] text-2xl pt-0 md:pt-6">
             Whether you&apos;re a consultant, coach, or entrepreneur, our app
             helps you save time by automating your meeting bookings. Focus on
             what matters, and let your calendar handle the rest!
           </p>
         </div>
-        <div className="max-w-7xl mx-auto flex flex-row justify-between gap-4 pb-12">
+        <div className="max-w-7xl mx-auto flex flex-col px-6 md:px-0 md:flex-row justify-between gap-4 pb-12">
           <div className="flex flex-col gap-4 bg-white border rounded-xl p-6">
             <Image
               src="/schedule.png"
@@ -110,10 +110,10 @@ export default function Home() {
       </section>
       <section className="w-screen py-10">
         <div className="max-w-7xl mx-auto flex flex-col justify-center items-center gap-12 text-center">
-          <h1 className=" font-semibold text-6xl">
+          <h1 className=" font-semibold text-4xl md:text-6xl">
             Solution for Entrepreneurs
           </h1>
-          <p className="w-[999px] text-xl">
+          <p className="md:w-[999px] text-xl px-6 md:px-0  ">
             Smart booking system that moves around your availability Coordinate
             effortlessly with team members and clients. Share your availability,
             avoid conflicts, and keep everyone on the same page—no more endless
@@ -129,27 +129,24 @@ export default function Home() {
             <source src="/home-availability-light.mp4" type="video/mp4" />
             Your browser does not support the video tag.
           </video>
-
-          {/* <Image
-            src="/image-main.png"
-            alt="Hero Image"
-            width={1032}
-            height={601}
-          /> */}
         </div>
       </section>
       <section className="w-screen bg-main_accent pb-24">
-        <div className="max-w-7xl mx-auto flex flex-row justify-between pt-24">
+        <div className="max-w-7xl mx-auto flex flex-col px-8 md:px-0 gap-4 md:gap-0 md:flex-row justify-between pt-24">
           <div className="bg-tile_cream rounded-xl flex flex-col justify-center gap-4 pl-6">
-            <h1 className=" text-3xl font-bold">85+</h1>
-            <p className="w-[280px]">meetings scheduled in the first month.</p>
+            <h1 className="md:py-0 py-8 text-3xl font-bold">85+</h1>
+            <p className="md:py-0 py-8 w-[280px]">
+              meetings scheduled in the first month.
+            </p>
           </div>
           <div className="bg-tile_blue rounded-xl flex flex-col justify-center gap-4 pl-6">
-            <h1 className=" text-3xl font-bold">50</h1>
-            <p className="w-[280px]">hours saved on back-and-forth emails.</p>
+            <h1 className="md:py-0 py-8 text-3xl font-bold">50</h1>
+            <p className="md:py-0 py-8 w-[280px]">
+              hours saved on back-and-forth emails.
+            </p>
           </div>
           <div>
-            <div className="flex flex-row items-center gap-4 bg-white">
+            <div className="flex flex-col md:flex-row items-center gap-4 bg-white">
               <Image
                 src="/woman_two.jpg"
                 alt="Hero Image"
@@ -164,9 +161,9 @@ export default function Home() {
             </div>
           </div>
         </div>
-        <div className="max-w-7xl mx-auto flex flex-row justify-between pt-12">
+        <div className="max-w-7xl mx-auto flex flex-col md:flex-row justify-between pt-12 md:px-0 px-8 gap-4 md:gap-0">
           <div>
-            <div className="flex flex-row items-center gap-4 bg-white">
+            <div className="flex flex-col md:flex-row items-center gap-4 bg-white ">
               <Image src="/man.jpg" alt="Hero Image" width={215} height={250} />
               <p className="w-[350px] h-[150px] ">
                 &quot;Our team loves the automated reminders and seamless
@@ -176,27 +173,33 @@ export default function Home() {
             </div>
           </div>
           <div className="bg-tile_purple rounded-xl flex flex-col justify-center gap-4 pl-6">
-            <h1 className=" text-3xl font-bold">12</h1>
-            <p className="w-[280px]">no-shows reduced in a single quarter.</p>
+            <h1 className="md:py-0 py-8 text-3xl font-bold">12</h1>
+            <p className="md:py-0 py-8 w-[280px]">
+              no-shows reduced in a single quarter.
+            </p>
           </div>
           <div className="bg-tile_cream rounded-xl flex flex-col justify-center gap-4 pl-6">
-            <h1 className=" text-3xl font-bold">30%</h1>
-            <p className="w-[280px]">increase in client satisfaction scores.</p>
+            <h1 className="md:py-0 py-8 text-3xl font-bold">30%</h1>
+            <p className="md:py-0 py-8 w-[280px]">
+              increase in client satisfaction scores.
+            </p>
           </div>
         </div>
-        <div className="max-w-7xl mx-auto flex flex-row justify-between pt-12">
+        <div className="max-w-7xl mx-auto md:px-0 px-8 flex flex-col md:flex-row justify-between gap-4 md:gap-0 pt-12">
           <div className="bg-tile_blue rounded-xl flex flex-col justify-center gap-4 pl-6">
-            <h1 className=" text-3xl font-bold">150+</h1>
-            <p className="w-[280px]">
+            <h1 className="md:py-0 py-8 text-3xl font-bold">150+</h1>
+            <p className="md:py-0 py-8 w-[280px]">
               appointments managed without a single double-booking.
             </p>
           </div>
           <div className="bg-tile_green rounded-xl flex flex-col justify-center gap-4 pl-6">
-            <h1 className=" text-3xl font-bold">20+</h1>
-            <p className="w-[280px]">hours saved every week since adoption.</p>
+            <h1 className="md:py-0 py-8 text-3xl font-bold">20+</h1>
+            <p className="md:py-0 py-8 w-[280px]">
+              hours saved every week since adoption.
+            </p>
           </div>
           <div className="">
-            <div className="flex flex-row items-center gap-4 bg-white">
+            <div className="flex flex-col md:flex-row items-center gap-4 bg-white">
               <Image
                 src="/woman_one.jpg"
                 alt="Hero Image"
@@ -214,7 +217,7 @@ export default function Home() {
       </section>
       <section className="w-screen bg-main ">
         <div className="max-w-7xl mx-auto flex flex-col place-items-center gap-6 ">
-          <p className=" text-2xl text-center w-[740px] pt-12">
+          <p className=" text-2xl text-center md:w-[740px] pt-12">
             Ready to Take Control of Your Schedule? Start booking smarter today.
             No credit card required!
           </p>
