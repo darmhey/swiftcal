@@ -41,7 +41,7 @@ export default function Home() {
           </Link>
         </div>
       </section>
-      <div className="border w-screen border-red-400 max-w-7xl mx-auto flex flex-row justify-center ">
+      <div className="border w-screen border-red-400 max-w-7xl mx-auto flex flex-row justify-center mt-[-50px] ">
         <Image
           src="/image-main.png"
           alt="Hero Image"
@@ -122,7 +122,7 @@ export default function Home() {
           />
         </div>
       </section>
-      <section className="w-screen bg-main_accent">
+      <section className="w-screen bg-main_accent pb-24">
         <div className="max-w-7xl mx-auto flex flex-row justify-between pt-24">
           <div className="bg-tile_cream rounded-xl flex flex-col justify-center gap-4 pl-6">
             <h1 className=" text-3xl font-bold">85+</h1>
@@ -133,7 +133,7 @@ export default function Home() {
             <p className="w-[280px]">hours saved on back-and-forth emails.</p>
           </div>
           <div>
-            <div className="flex flex-row items-center gap-4">
+            <div className="flex flex-row items-center gap-4 bg-white">
               <Image
                 src="/woman_two.jpg"
                 alt="Hero Image"
@@ -150,53 +150,75 @@ export default function Home() {
         </div>
         <div className="max-w-7xl mx-auto flex flex-row justify-between pt-12">
           <div>
-            <div className="flex flex-row items-center gap-4">
-              <Image
-                src="/woman_two.jpg"
-                alt="Hero Image"
-                width={215}
-                height={250}
-              />
+            <div className="flex flex-row items-center gap-4 bg-white">
+              <Image src="/man.jpg" alt="Hero Image" width={215} height={250} />
               <p className="w-[350px] h-[150px] ">
-                &quot;This scheduling app transformed how I manage client
-                bookings. It&apos;s simple, fast, and keeps me organized!&quot;
-                -Sarah Thompson, Freelance Consultant
+                &quot;Our team loves the automated reminders and seamless
+                booking experience. It&apos;s a game-changer for our
+                workflow.&quot; -Michael Rivera, Head of Client Success
               </p>
             </div>
           </div>
           <div className="bg-tile_purple rounded-xl flex flex-col justify-center gap-4 pl-6">
-            <h1 className=" text-3xl font-bold">85+</h1>
-            <p className="w-[280px]">meetings scheduled in the first month.</p>
+            <h1 className=" text-3xl font-bold">12</h1>
+            <p className="w-[280px]">no-shows reduced in a single quarter.</p>
           </div>
           <div className="bg-tile_cream rounded-xl flex flex-col justify-center gap-4 pl-6">
-            <h1 className=" text-3xl font-bold">50</h1>
-            <p className="w-[280px]">hours saved on back-and-forth emails.</p>
+            <h1 className=" text-3xl font-bold">30%</h1>
+            <p className="w-[280px]">increase in client satisfaction scores.</p>
           </div>
         </div>
         <div className="max-w-7xl mx-auto flex flex-row justify-between pt-12">
           <div className="bg-tile_blue rounded-xl flex flex-col justify-center gap-4 pl-6">
-            <h1 className=" text-3xl font-bold">85+</h1>
-            <p className="w-[280px]">meetings scheduled in the first month.</p>
+            <h1 className=" text-3xl font-bold">150+</h1>
+            <p className="w-[280px]">
+              appointments managed without a single double-booking.
+            </p>
           </div>
           <div className="bg-tile_green rounded-xl flex flex-col justify-center gap-4 pl-6">
-            <h1 className=" text-3xl font-bold">50</h1>
-            <p className="w-[280px]">hours saved on back-and-forth emails.</p>
+            <h1 className=" text-3xl font-bold">20+</h1>
+            <p className="w-[280px]">hours saved every week since adoption.</p>
           </div>
-          <div>
-            <div className="flex flex-row items-center gap-4">
+          <div className="">
+            <div className="flex flex-row items-center gap-4 bg-white">
               <Image
-                src="/woman_two.jpg"
+                src="/woman_one.jpg"
                 alt="Hero Image"
                 width={215}
                 height={250}
               />
               <p className="w-[350px] h-[150px] ">
-                &quot;This scheduling app transformed how I manage client
-                bookings. It&apos;s simple, fast, and keeps me organized!&quot;
-                -Sarah Thompson, Freelance Consultant
+                &quot;As a small business owner, this app helped me reclaim my
+                time. Now I focus on delivering value, not juggling my
+                schedule.&quot; -Jessica Patel, Founder & CEO
               </p>
             </div>
           </div>
+        </div>
+      </section>
+      <section className="w-screen bg-main ">
+        <div className="max-w-7xl mx-auto flex flex-col place-items-center gap-6 ">
+          <p className=" text-2xl text-center w-[740px] pt-12">
+            Ready to Take Control of Your Schedule? Start booking smarter today.
+            No credit card required!
+          </p>
+          <Link
+            className="mb-16 bg-accent rounded-full "
+            href="https://google.com"
+          >
+            <div className=" px-10 py-6  flex items-center justify-center">
+              <span className=" text-xl uppercase font-bold">
+                Start For Free
+              </span>
+              <Image
+                src="arroww.svg"
+                alt="Arrow"
+                width={30}
+                height={30}
+                className="ml-2"
+              />
+            </div>
+          </Link>
         </div>
       </section>
     </>
