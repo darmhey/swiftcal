@@ -9,7 +9,15 @@ export default function ClientLayout({
 }) {
   const pathname = usePathname();
 
-  const hideHeaderRoutes = ["/schedule"];
+  const hideHeaderRoutes = [
+    "/schedule",
+    "/schedule/availability",
+    "/schedule/profile",
+    "/schedule/bookings",
+    "/schedule/profile",
+    "/schedule/scheduleLinks",
+    "/schedule/settings",
+  ];
 
   return (
     <div className="relative">

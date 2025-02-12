@@ -1,8 +1,8 @@
 export default function Page() {
   return (
     <>
-      <div className="w-5/6">
-        <h1>Create New Schedule</h1>
+      <div>
+        <h1>Availability</h1>
       </div>
     </>
   );
