@@ -22,10 +22,7 @@ export default function Home() {
             around your availability. No more back-and-forth emails.
           </p>
 
-          <Link
-            className="mb-48 bg-accent rounded-full "
-            href="https://google.com"
-          >
+          <Link href="/login" className="mb-48 bg-accent rounded-full ">
             <div className=" px-10 py-6  flex items-center justify-center">
               <span className=" text-xl uppercase font-bold">
                 Start For Free
