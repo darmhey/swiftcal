@@ -1,6 +1,13 @@
-"use client";
+import {
+  CalendarCheck,
+  Plus,
+  Cable,
+  Boxes,
+  NotepadText,
+  User,
+  Cog,
+} from "lucide-react";
 import Link from "next/link";
-// import Image from "next/image";
 export default function SideNavigation() {
   return (
     <>
@@ -9,13 +16,8 @@ export default function SideNavigation() {
           {" "}
           <Link href="/">
             <div className=" flex flex-row  p-4">
-              {/* <Image
-                src="swiftcal.svg"
-                alt="Arrow"
-                width={22}
-                height={22}
-                className="ml-2"
-              /> */}
+              <CalendarCheck className="ml-2" size={22} />
+
               <h1 className=" italic text-xl pl-4">SwiftCal</h1>
             </div>
           </Link>
@@ -23,66 +25,36 @@ export default function SideNavigation() {
         <div className=" grow flex flex-col justify-between mb-24 ">
           <ul className="flex flex-col justify-center items-center text-[18px] p-1 gap-3">
             <li className="bg-accent rounded-full  flex gap-2 py-3 px-5 font-semibold ">
-              {/* <Image
-                src="plus.svg"
-                alt="Arrow"
-                width={18}
-                height={18}
-                className="w-auto h-auto ml-2"
-              /> */}
+              <Plus className="ml-2" size={22} />
+
               <Link href="/schedule">New Schedule</Link>
             </li>
             <li className=" hover:bg-gray-300 rounded-md duration-300 ease-in-out flex gap-2 py-3 px-5 font-semibold w-full ">
-              {/* <Image
-                src="links.svg"
-                alt="Arrow"
-                width={18}
-                height={18}
-                className="w-auto h-auto ml-2"
-              /> */}
+              <Cable className="ml-2" size={22} />
+
               <Link href="/schedule/scheduleLinks">Scheduling links</Link>
             </li>
             <li className=" hover:bg-gray-300 rounded-md  duration-300 ease-in-out flex gap-2 py-3 px-5 font-semibold w-full">
-              {/* <Image
-                src="availability.svg"
-                alt="Arrow"
-                width={18}
-                height={18}
-                className="w-auto h-auto ml-2"
-              /> */}
+              <Boxes className="ml-2" size={22} />
+
               <Link href="/schedule/availability">Availability</Link>
             </li>
             <li className=" hover:bg-gray-300 rounded-md  duration-300 ease-in-out flex gap-2 py-3 px-5 font-semibold w-full ">
-              {/* <Image
-                src="bookings.svg"
-                alt="Arrow"
-                width={18}
-                height={18}
-                className="w-auto h-auto ml-2"
-              /> */}
+              <NotepadText className="ml-2" size={22} />
+
               <Link href="/schedule/bookings">Bookings</Link>
             </li>
           </ul>
           <ul className="flex flex-col gap-3">
             {" "}
             <li className=" hover:bg-gray-300 rounded-md duration-300 ease-in-out flex gap-2 py-3 px-5 font-semibold w-full ">
-              {/* <Image
-                src="profile.svg"
-                alt="Arrow"
-                width={18}
-                height={18}
-                className="w-auto h-auto ml-2"
-              /> */}
+              <User className="ml-2" size={22} />
+
               <Link href="/schedule/profile">Profile</Link>
             </li>
             <li className=" hover:bg-gray-300 rounded-md duration-300 ease-in-out flex gap-2 py-3 px-5 font-semibold w-full ">
-              {/* <Image
-                src="settings.svg"
-                alt="Arrow"
-                width={18}
-                height={18}
-                className="w-auto h-auto ml-2"
-              /> */}
+              <Cog className="ml-2" size={22} />
+
               <Link href="/schedule/settings">Settings</Link>
             </li>
           </ul>

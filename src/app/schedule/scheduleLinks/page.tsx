@@ -34,7 +34,7 @@ export default function Page() {
               <div>
                 <p className="font-bold">Damiola John</p>
                 <p className="text-sm text-blue-500">
-                  savvycal.com/johnnasco19
+                  swiftcal.com/johnnasco19
                 </p>
               </div>
             </div>
