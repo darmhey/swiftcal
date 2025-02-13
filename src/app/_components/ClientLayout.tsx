@@ -21,7 +21,6 @@ export default function ClientLayout({
 
   return (
     <div className="relative">
-      {/* Conditionally render the Header */}
       {!hideHeaderRoutes.includes(pathname) && <Header />}
       {children}
     </div>

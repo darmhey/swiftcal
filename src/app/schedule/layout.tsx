@@ -7,8 +7,10 @@ export default function Layout({
   return (
     <>
       <div className=" w-screen bg-main_accent flex flex-row">
-        <SideNavigation />
-        {children}
+        <div className=" w-1/6 ">
+          <SideNavigation />
+        </div>
+        <div className=" w-5/6 "> {children}</div>
       </div>
     </>
   );

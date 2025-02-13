@@ -2,7 +2,7 @@ import Image from "next/image";
 export default function Page() {
   return (
     <>
-      <div className="w-5/6 flex flex-col h-screen">
+      <div className="w-full flex flex-col h-screen">
         <h1 className="text-xl font-semibold p-10 text-accent block ">
           Create Schedule link
         </h1>

@@ -18,6 +18,7 @@ export default {
         tile_green: "#E6FAE3",
         tile_blue: "#D3E5F0",
         tile_purple: "#E9D9FF",
+        white_alt: "#F3F4F6",
       },
     },
   },
