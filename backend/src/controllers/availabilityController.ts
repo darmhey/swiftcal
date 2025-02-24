@@ -1,14 +1,17 @@
 import { Request, Response } from "express";
 import { Availability } from "../models/availabilityModel";
+//import mongoose from "mongoose";
 
 // Get availability for a specific host
+export const getAvailability1 = () => console.log("hello");
 export const getAvailability = async (req: Request, res: Response) => {
   try {
-    const { hostId } = req.params;
-    const availability = await Availability.findOne({ hostId });
+    const availability = await Availability.find();
+
     if (!availability) {
       return res.status(404).json({ message: "Availability not found" });
     }
+
     res.json(availability);
   } catch (error) {
     console.error("Error fetching availability:", error);

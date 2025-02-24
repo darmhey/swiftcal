@@ -24,9 +24,32 @@ export const createAppointment = async (req: Request, res: Response) => {
       meetingLink,
     });
     await newAppointment.save();
-    res.status(201).json(newAppointment);
+    res.status(201).json({
+      status: "success",
+      data: {
+        tour: newAppointment,
+      },
+    });
   } catch (error) {
     console.error("Error creating appointment:", error);
     res.status(500).json({ message: "Error creating appointment" });
   }
 };
+
+// Create a new Appointment
+// export const createAppointment = async (req: Request, res: Response) => {
+//   try {
+//     const { hostId, email, role } = req.body;
+//     const newAppointment = new Appointment({ name, email, role });
+//     await newAppointment.save();
+//     res.status(201).json({
+//       status: "success",
+//       data: {
+//         tour: newAppointment,
+//       },
+//     });
+//   } catch (error) {
+//     console.error("Error creating user:", error);
+//     res.status(500).json({ message: error });
+//   }
+// };

@@ -1,5 +1,4 @@
 import mongoose, { Schema, Document } from "mongoose";
-import validator from "validator";
 
 export interface IUser extends Document {
   name: string;
@@ -13,7 +12,6 @@ const UserSchema = new Schema<IUser>({
   name: {
     type: String,
     required: [true, "Please tell us your name!"],
-    validate: [validator.isEmail, "Please provide a valid email"],
   },
   email: {
     type: String,

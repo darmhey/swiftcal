@@ -3,6 +3,10 @@ import dotenv from "dotenv";
 import cors from "cors";
 import connectDB from "./config/db";
 
+import appointmentRouter from "./routes/appointmentRoutes";
+import userRouter from "./routes/userRoutes";
+import availabilityRouter from "./routes/availabilityRoutes";
+
 // Load environment variables
 dotenv.config();
 
@@ -16,10 +20,13 @@ app.use(express.json());
 // Database connection
 connectDB();
 
-// Default route
-app.get("/", (req, res) => {
-  res.send("Appointment Booking API is running...");
-});
+// ROUTES
+// app.use("/", (req, res) => {
+//   res.send("Appointment Booking API is running...");
+// });
+app.use("/api/v1/appontments", appointmentRouter);
+app.use("/api/v1/users", userRouter);
+app.use("/api/v1/availability", availabilityRouter);
 
 // Start the server
 app.listen(PORT, () => {
