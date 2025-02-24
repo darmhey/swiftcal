@@ -4,8 +4,13 @@ import { Appointment } from "../models/appointmentModel";
 // Get all appointments
 export const getAppointments = async (req: Request, res: Response) => {
   try {
-    const appointments = await Appointment.find().populate("hostId clientId");
-    res.json(appointments);
+    const appointments = await Appointment.find();
+    res.status(201).json({
+      status: "success",
+      data: {
+        appointments,
+      },
+    });
   } catch (error) {
     console.error("Error fetching appointments:", error);
     res.status(500).json({ message: "Server Error" });
@@ -15,10 +20,9 @@ export const getAppointments = async (req: Request, res: Response) => {
 // Create a new appointment
 export const createAppointment = async (req: Request, res: Response) => {
   try {
-    const { hostId, clientId, date, status, meetingLink } = req.body;
+    const { hostId, date, status, meetingLink } = req.body;
     const newAppointment = new Appointment({
       hostId,
-      clientId,
       date,
       status,
       meetingLink,
@@ -27,7 +31,7 @@ export const createAppointment = async (req: Request, res: Response) => {
     res.status(201).json({
       status: "success",
       data: {
-        tour: newAppointment,
+        appointment: newAppointment,
       },
     });
   } catch (error) {

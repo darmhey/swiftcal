@@ -24,7 +24,7 @@ connectDB();
 // app.use("/", (req, res) => {
 //   res.send("Appointment Booking API is running...");
 // });
-app.use("/api/v1/appontments", appointmentRouter);
+app.use("/api/v1/appointments", appointmentRouter);
 app.use("/api/v1/users", userRouter);
 app.use("/api/v1/availability", availabilityRouter);
 

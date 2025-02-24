@@ -12,6 +12,7 @@ const AppointmentSchema = new Schema<IAppointment>({
   hostId: { type: Schema.Types.ObjectId, ref: "User", required: true },
   date: {
     type: Date,
+    default: Date.now,
     required: [true, "What Date?"],
   },
   status: {
