@@ -28,6 +28,24 @@ passport.use(
   )
 );
 
+// Serialize user into session (store just the Google ID)
+passport.serializeUser((user, done) => {
+  const profile = user as passport.Profile; // Cast to our expected type
+  done(null, profile.id); // Save only the Google ID
+});
+
+// Deserialize user from session (turn ID back into profile)
+passport.deserializeUser(
+  (
+    id: string,
+    done: (error: Error | null, user?: passport.Profile | null) => void
+  ) => {
+    // For now, just return a minimal user object with the ID
+    // Later, this will fetch from MongoDB
+    const user = { id } as passport.Profile;
+    done(null, user);
+  }
+);
 // Export Passport initialization and auth middleware
 export const initializePassport = () => passport.initialize();
 
