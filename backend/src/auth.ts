@@ -1,6 +1,8 @@
 import passport from "passport";
 import { Strategy as GoogleStrategy } from "passport-google-oauth20";
 import dotenv from "dotenv";
+import { handleGoogleAuth } from "./controllers/authController";
+import { IUser } from "./models/userModel";
 
 dotenv.config();
 
@@ -15,37 +17,37 @@ passport.use(
       clientSecret: GOOGLE_CLIENT_SECRET,
       callbackURL: CALLBACK_URL,
     },
-    (
-      accessToken: string,
-      refreshToken: string | undefined,
-      profile: passport.Profile,
-      done: (error: Error | null, user?: passport.Profile) => void
-    ) => {
-      // This runs when Google sends back the profile
-      // For now, just pass the profile along
-      return done(null, profile);
-    }
+    handleGoogleAuth
   )
 );
 
 // Serialize user into session (store just the Google ID)
 passport.serializeUser((user, done) => {
-  const profile = user as passport.Profile; // Cast to our expected type
-  done(null, profile.id); // Save only the Google ID
+  const profile = user as IUser;
+  done(null, profile.googleId);
 });
 
 // Deserialize user from session (turn ID back into profile)
-passport.deserializeUser(
-  (
-    id: string,
-    done: (error: Error | null, user?: passport.Profile | null) => void
-  ) => {
-    // For now, just return a minimal user object with the ID
-    // Later, this will fetch from MongoDB
-    const user = { id } as passport.Profile;
-    done(null, user);
+passport.deserializeUser(async (googleId: string, done) => {
+  try {
+    const user = await import("./models/userModel").then((m) =>
+      m.User.findOne({ googleId })
+    );
+    done(null, user || null);
+  } catch (error) {
+    done(error instanceof Error ? error : new Error("Unknown error"));
   }
-);
+});
+// (
+//   id: string,
+//   done: (error: Error | null, user?: passport.Profile | null) => void
+// ) => {
+//   // For now, just return a minimal user object with the ID
+//   // Later, this will fetch from MongoDB
+//   const user = { id } as passport.Profile;
+//   done(null, user);
+// }
+
 // Export Passport initialization and auth middleware
 export const initializePassport = () => passport.initialize();
 

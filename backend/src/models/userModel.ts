@@ -1,14 +1,19 @@
 import mongoose, { Schema, Document } from "mongoose";
 
 export interface IUser extends Document {
+  googleId?: string;
   name: string;
   email: string;
-  photo: string;
-  role: "host" | "client";
+  photo?: string;
   createdAt: Date;
 }
 
 const UserSchema = new Schema<IUser>({
+  googleId: {
+    type: String,
+    unique: true,
+    sparse: true,
+  },
   name: {
     type: String,
     required: [true, "Please tell us your name!"],
@@ -24,7 +29,6 @@ const UserSchema = new Schema<IUser>({
     default: "default.jpg",
   },
 
-  role: { type: String, enum: ["host", "client"], required: true },
   createdAt: { type: Date, default: Date.now },
 });
 
