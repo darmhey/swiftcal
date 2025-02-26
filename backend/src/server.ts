@@ -16,14 +16,24 @@ const app = express();
 const PORT = process.env.PORT;
 
 // Middleware
-app.use(cors());
+app.use(
+  cors({
+    origin: "http://localhost:3000", // Match your frontend
+    credentials: true, // Allow cookies to be sent and received
+  })
+);
 app.use(express.json());
 app.use(
   session({
     secret: process.env.SESSION_SECRET || "your-secret-key", // Use a strong secret
     resave: false, // Don’t resave session if unmodified
     saveUninitialized: false, // Don’t save uninitialized sessions
-    cookie: { secure: false }, // Set to true in production with HTTPS
+    cookie: {
+      secure: false, // Use true in production with HTTPS
+      httpOnly: true, // Prevents JavaScript access to the cookie
+      sameSite: "lax", // Allows cross-origin requests (e.g., localhost:3000 to localhost:3002)
+      maxAge: 24 * 60 * 60 * 1000, // 24 hours
+    },
   })
 );
 app.use(initializePassport()); // Initialize Passport from auth.ts
@@ -45,6 +55,7 @@ app.get(
   googleAuthCallback,
   (req: Request, res: Response) => {
     // Successful authentication - redirect to frontend
+    console.log("Callback hit! User:", req.user || "No user");
     res.redirect("http://localhost:3000/schedule"); // Adjust if your frontend port differs
   }
 );

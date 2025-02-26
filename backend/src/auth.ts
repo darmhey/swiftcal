@@ -33,8 +33,13 @@ passport.deserializeUser(async (googleId: string, done) => {
     const user = await import("./models/userModel").then((m) =>
       m.User.findOne({ googleId })
     );
+    console.log("Deserializing:", {
+      googleId,
+      user: user ? user.toObject() : null,
+    });
     done(null, user || null);
   } catch (error) {
+    console.error("Deserialize error:", error);
     done(error instanceof Error ? error : new Error("Unknown error"));
   }
 });

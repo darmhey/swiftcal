@@ -1,4 +1,4 @@
-import { Request, Response } from "express";
+import { Request, Response, RequestHandler } from "express";
 import { User, IUser } from "../models/userModel";
 
 // Get all users
@@ -32,7 +32,10 @@ export const createUser = async (req: Request, res: Response) => {
 
 //Get current user
 
-export const getCurrentUser = (req: Request, res: Response) => {
-  if (!req.user) return res.status(401).json({ message: "Not logged in" });
-  res.json(req.user as IUser);
+export const getCurrentUser: RequestHandler = (req: Request, res: Response) => {
+  if (!req.user) {
+    res.status(401).json({ message: "Not logged in" });
+  } else {
+    res.json(req.user as IUser);
+  }
 };

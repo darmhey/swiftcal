@@ -1,0 +1,1 @@
+self.__NEXT_FONT_MANIFEST="{\"pages\":{},\"app\":{\"/Users/darmhey/Development/projects/swiftcal/src/app/layout\":[\"static/media/07ce98f0c2830616-s.p.woff2\"],\"/Users/darmhey/Development/projects/swiftcal/src/app/page\":[\"static/media/8dfe6d40ab27bf9a-s.p.woff2\"]},\"appUsingSizeAdjust\":true,\"pagesUsingSizeAdjust\":false}"

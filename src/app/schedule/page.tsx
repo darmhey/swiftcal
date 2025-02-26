@@ -1,5 +1,13 @@
 import Image from "next/image";
-export default function Page() {
+export default async function Page() {
+  async function fetchCurrentUser() {
+    const res = await fetch("http://127.0.0.1:3002/api/v1/users/me", {
+      credentials: "include", // Ensures cookies are sent (including connect.sid)
+    });
+    const data = await res.json();
+    console.log(data);
+  }
+  fetchCurrentUser();
   return (
     <>
       <div className="w-full flex flex-col h-screen">
