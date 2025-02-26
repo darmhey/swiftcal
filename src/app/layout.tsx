@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
-import ClientLayout from "@/app/_components/ClientLayout"; // Import new layout
+import ClientLayout from "./_components/ClientLayout"; // Import new layout
 
 const inter = Inter({
   weight: "400",

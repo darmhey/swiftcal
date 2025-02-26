@@ -1,6 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
-import Navigation from "@/app/_components/Navigation";
+import Navigation from "./Navigation";
 
 function Header() {
   return (

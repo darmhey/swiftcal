@@ -45,6 +45,7 @@ passport.deserializeUser(async (googleId: string, done) => {
 });
 // (
 //   id: string,
+
 //   done: (error: Error | null, user?: passport.Profile | null) => void
 // ) => {
 //   // For now, just return a minimal user object with the ID
