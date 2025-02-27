@@ -1,5 +1,6 @@
 import { Profile } from "passport-google-oauth20";
-import { User, IUser } from "../models/userModel"; // Adjust path to your user model
+import jwt from "jsonwebtoken";
+import { User, IUser } from "../models/userModel";
 
 export const handleGoogleAuth = async (
   accessToken: string,
