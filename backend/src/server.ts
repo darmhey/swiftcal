@@ -1,50 +1,70 @@
-import express, { Request, Response } from "express";
+import express, {
+  Request,
+  Response,
+  NextFunction,
+  RequestHandler,
+} from "express";
 import dotenv from "dotenv";
 import cors from "cors";
 import connectDB from "./config/db";
+import jwt from "jsonwebtoken";
+import { User, IUser } from "./models/userModel"; // Import User and IUser for type safety
 
 import appointmentRouter from "./routes/appointmentRoutes";
 import userRouter from "./routes/userRoutes";
 import availabilityRouter from "./routes/availabilityRoutes";
-import session from "express-session";
-import { initializePassport, googleAuth, googleAuthCallback } from "./auth";
+import {
+  initializePassport,
+  googleAuth,
+  googleAuthCallback,
+} from "./controllers/authController";
 
-// Load environment variables
 dotenv.config();
 
 const app = express();
-const PORT = process.env.PORT;
+const PORT = process.env.PORT || 3002;
 
 // Middleware
 app.use(
   cors({
     origin: "http://localhost:3000", // Match your frontend
-    credentials: true, // Allow cookies to be sent and received
+    credentials: true, // Allow credentials for consistency, but not needed for JWTs
   })
 );
 app.use(express.json());
-app.use(
-  session({
-    secret: process.env.SESSION_SECRET || "your-secret-key", // Use a strong secret
-    resave: false, // Don’t resave session if unmodified
-    saveUninitialized: false, // Don’t save uninitialized sessions
-    cookie: {
-      secure: false, // Use true in production with HTTPS
-      httpOnly: true, // Prevents JavaScript access to the cookie
-      sameSite: "lax", // Allows cross-origin requests (e.g., localhost:3000 to localhost:3002)
-      maxAge: 24 * 60 * 60 * 1000, // 24 hours
-    },
-  })
-);
-app.use(initializePassport()); // Initialize Passport from auth.ts
+
+// Middleware to verify JWT
+const authenticateJWT: RequestHandler = (
+  req: Request,
+  res: Response,
+  next: NextFunction
+) => {
+  const token = req.headers.authorization?.split(" ")[1];
+  if (!token) {
+    res.status(401).json({ message: "Not logged in" });
+    return; // Explicitly return to avoid undefined
+  }
+
+  try {
+    const decoded = jwt.verify(
+      token,
+      process.env.JWT_SECRET || "your-jwt-secret-here"
+    ) as { googleId: string };
+    req.user = { googleId: decoded.googleId }; // Set req.user for compatibility
+    next();
+  } catch (error) {
+    res.status(401).json({ message: "Invalid token", error });
+    return; // Explicitly return to avoid undefined
+  }
+};
+
+//initialize passport
+app.use(initializePassport());
 
 // Database connection
 connectDB();
 
 // ROUTES
-// app.use("/", (req, res) => {
-//   res.send("Appointment Booking API is running...");
-// });
 app.use("/api/v1/appointments", appointmentRouter);
 app.use("/api/v1/users", userRouter);
 app.use("/api/v1/availability", availabilityRouter);
@@ -53,10 +73,45 @@ app.get("/api/v1/auth/google", googleAuth);
 app.get(
   "/api/v1/auth/google/callback",
   googleAuthCallback,
-  (req: Request, res: Response) => {
-    // Successful authentication - redirect to frontend
-    console.log("Callback hit! User:", req.user || "No user");
-    res.redirect("http://localhost:3000/schedule"); // Adjust if your frontend port differs
+  async (req: Request, res: Response, next: NextFunction): Promise<void> => {
+    // Explicitly return Promise<void>
+    try {
+      if (!req.user) {
+        res.status(401).json({ message: "Authentication failed" });
+        return; // Ensure the function completes
+      }
+      const user = req.user as IUser; // Cast req.user to IUser
+      // Generate JWT
+      const token = jwt.sign(
+        { googleId: user.googleId },
+        process.env.JWT_SECRET!,
+        { expiresIn: "1h" } // Token expires in 1 hour
+      );
+      console.log("Callback hit! User:", user);
+      res.redirect(`http://localhost:3000/schedule?token=${token}`); // Send token in query
+    } catch (error) {
+      next(error); // Pass errors to Express error handler
+    }
+  }
+);
+
+// Protect /me with JWT
+app.get(
+  "/api/v1/users/me",
+  authenticateJWT,
+  async (req: Request, res: Response, next: NextFunction): Promise<void> => {
+    // Explicitly return Promise<void>
+    try {
+      const { googleId } = req.user as { googleId: string };
+      const user = await User.findOne({ googleId });
+      if (!user) {
+        res.status(404).json({ message: "User not found" });
+        return; // Ensure the function completes
+      }
+      res.json(user);
+    } catch (error) {
+      next(error); // Pass errors to Express error handler
+    }
   }
 );
 
@@ -64,16 +119,3 @@ app.get(
 app.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`);
 });
-
-// import express from "express";
-
-// const app = express();
-
-// app.get("/", (req, res) => {
-//   res.status(200).send("Hello from backend");
-// });
-
-// const port = 3002;
-// app.listen(port, () => {
-//   console.log("App is running...");
-// });
