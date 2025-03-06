@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { useSearchParams } from "next/navigation";
+import Image from "next/image";
 
 interface User {
   googleId?: string;
@@ -14,46 +14,25 @@ interface User {
 // Define a type for the possible states of `user`
 type UserState = User | { message: string };
 
-import Image from "next/image";
 export default function Page() {
   const [user, setUser] = useState<UserState | null>(null);
-  const searchParams = useSearchParams();
-  const token = searchParams.get("token");
 
   useEffect(() => {
-    if (token) {
-      localStorage.setItem("jwt", token); // Store JWT in localStorage
-    }
-
     async function fetchCurrentUser() {
-      const storedToken = localStorage.getItem("jwt");
-      if (!storedToken) return setUser({ message: "Not logged in" });
-
       try {
-        console.log("Fetching user with token:", storedToken); // Debug log
-        const res = await fetch("http://127.0.0.1:3002/api/v1/users/me", {
-          headers: {
-            Authorization: `Bearer ${storedToken}`,
-          },
+        const res = await fetch("http://localhost:3002/api/v1/users/me", {
+          credentials: "include", // Send cookies (sessions) with the request
         });
         const data = await res.json();
-        console.log("API Response:", data); // Debug log
-        setUser(data as UserState); // Type the data as UserState
+        setUser(data as UserState);
       } catch (error) {
         console.error("Fetch error:", error);
         setUser({ message: "Error fetching user" });
       }
     }
     fetchCurrentUser();
-  }, [token]);
-  // async function fetchCurrentUser() {
-  //   const res = await fetch("http://127.0.0.1:3002/api/v1/users/me", {
-  //     credentials: "include", // Ensures cookies are sent (including connect.sid)
-  //   });
-  //   const data = await res.json();
-  //   console.log(data);
-  // }
-  // fetchCurrentUser();
+  }, []);
+
   return (
     <>
       <div className="w-full flex flex-col h-screen">
@@ -62,7 +41,7 @@ export default function Page() {
             "message" in user ? (
               <p>{user.message}</p>
             ) : (
-              <p>Welcome, {user.name || user.email}!</p> // Safe now due to type narrowing
+              <p>Welcome, {user.name || user.email}!</p>
             )
           ) : (
             <p>Loading...</p>
