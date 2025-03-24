@@ -7,7 +7,7 @@ import {
   setupPassport,
   googleAuth,
   googleAuthCallback,
-} from "./controllers/authController";
+} from "../authController";
 import { IUser } from "./models/userModel";
 
 import appointmentRouter from "./routes/appointmentRoutes";

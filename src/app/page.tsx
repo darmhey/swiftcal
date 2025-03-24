@@ -7,6 +7,7 @@ const figtree = Figtree({
   style: "normal",
   subsets: ["latin"],
 });
+
 export default function Home() {
   return (
     <>
